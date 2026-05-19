@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Kawatra Impex — Quality Import, Export & Domestic Distribution. FSSAI Certified global trading enterprise based in New Delhi.">
+<title>Kawatra Impex — Global Trade. Indian Roots.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── DESIGN TOKENS ────────────────────────────────── */
+:root {
+  --ink:      #0F1923;
+  --ink2:     #1E2D3D;
+  --ink3:     #2C3F54;
+  --rust:     #B84A1A;
+  --rust2:    #D4622A;
+  --rust3:    #E88558;
+  --amber:    #D4960A;
+  --amber2:   #F0B429;
+  --sand:     #FAF5EC;
+  --sand2:    #F2E8D5;
+  --sand3:    #E5D4B8;
+  --white:    #FFFFFF;
+  --text:     #0F1923;
+  --text2:    #3D5166;
+  --text3:    #7A90A4;
+  --border:   rgba(15,25,35,.09);
+  --r: 6px; --r2: 12px; --r3: 20px;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Outfit', sans-serif;
+}
+
+/* ── RESET ────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--font-body); background: var(--sand); color: var(--text); overflow-x: hidden; line-height: 1.65; }
+img { display: block; max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+button, input, textarea, select { font-family: var(--font-body); }
+
+/* ── ANIMATIONS ───────────────────────────────────── */
+@keyframes fadeUp   { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: none; } }
+@keyframes fadeIn   { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideDown{ from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+@keyframes ticker   { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes float    { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+@keyframes pulse    { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
+@keyframes shimmer  { 0% { background-position: -600px 0; } 100% { background-position: 600px 0; } }
+@keyframes spin     { to { transform: rotate(360deg); } }
+
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+.reveal.on { opacity: 1; transform: none; }
+.d1 { transition-delay: .08s; } .d2 { transition-delay: .16s; } .d3 { transition-delay: .24s; }
+.d4 { transition-delay: .32s; } .d5 { transition-delay: .40s; } .d6 { transition-delay: .48s; }
+
+/* ── SCROLL PROGRESS ──────────────────────────────── */
+#prog { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--rust), var(--amber2)); z-index: 9999; width: 0; transition: width .1s; }
+
+/* ── TOPBAR ───────────────────────────────────────── */
+.topbar { background: var(--ink); padding: 8px 0; font-size: .72rem; letter-spacing: .04em; }
+.tb-inner { max-width: 1280px; margin: 0 auto; padding: 0 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+.tb-left { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+.tb-left a { color: rgba(255,255,255,.7); display: flex; align-items: center; gap: 7px; transition: color .2s; }
+.tb-left a:hover { color: var(--amber2); }
+.tb-left a .tb-icon { width: 14px; height: 14px; opacity: .55; }
+.tb-right { display: flex; gap: 14px; align-items: center; }
+.tb-cert { background: var(--rust); color: var(--white); font-size: .63rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; letter-spacing: .07em; text-transform: uppercase; }
+.tb-pvt  { color: rgba(255,255,255,.45); font-size: .68rem; }
+
+/* ── NAV ──────────────────────────────────────────── */
+.nav { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 900; box-shadow: 0 2px 24px rgba(15,25,35,.06); }
+.nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; height: 70px; gap: 24px; }
+.logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; cursor: pointer; }
+.logo-img { height: 44px; width: auto; display: block; }
+.logo-text { line-height: 1.1; }
+.logo-name { font-family: var(--font-body); font-size: 1.28rem; color: var(--ink); font-weight: 800; letter-spacing: -.01em; }
+.logo-name .lo-orange { color: #E87722; }
+.logo-sub  { font-size: .6rem; color: var(--text3); text-transform: uppercase; letter-spacing: .09em; font-weight: 500; margin-top: 2px; display: block; }
+.nav-links { display: flex; align-items: center; gap: 2px; }
+.nav-links a { font-size: .84rem; font-weight: 500; color: var(--text2); padding: 8px 15px; border-radius: var(--r); transition: all .2s; }
+.nav-links a:hover, .nav-links a.active { background: var(--sand); color: var(--ink); }
+.dropdown { position: relative; }
+.drop-btn { display: flex; align-items: center; gap: 5px; font-size: .84rem; font-weight: 500; color: var(--text2); padding: 8px 15px; border-radius: var(--r); transition: all .2s; cursor: pointer; border: none; background: none; }
+.drop-btn:hover { background: var(--sand); color: var(--ink); }
+.drop-chevron { width: 10px; height: 10px; transition: transform .25s; }
+.dropdown:hover .drop-chevron { transform: rotate(180deg); }
+.drop-menu { position: absolute; top: calc(100% + 6px); left: 0; background: var(--white); border: 1px solid var(--border); border-radius: var(--r2); padding: 6px; min-width: 200px; box-shadow: 0 16px 48px rgba(15,25,35,.12); opacity: 0; pointer-events: none; transform: translateY(-8px); transition: all .22s cubic-bezier(.16,1,.3,1); }
+.dropdown:hover .drop-menu { opacity: 1; pointer-events: all; transform: none; }
+.drop-menu a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; font-size: .83rem; color: var(--text2); border-radius: var(--r); transition: all .15s; white-space: nowrap; }
+.drop-menu a:hover { background: var(--sand); color: var(--rust); }
+.drop-menu-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--rust); flex-shrink: 0; }
+.nav-cta { background: var(--ink); color: var(--white); padding: 10px 22px; border-radius: var(--r); font-size: .84rem; font-weight: 600; transition: all .2s; white-space: nowrap; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+.nav-cta:hover { background: var(--ink2); transform: translateY(-1px); box-shadow: 0 4px 18px rgba(15,25,35,.22); }
+.hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; background: none; border: none; cursor: pointer; }
+.hamburger span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: all .3s; display: block; }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+.m-menu { display: none; background: var(--white); border-top: 1px solid var(--border); padding: 12px 28px 22px; }
+.m-menu.open { display: block; animation: slideDown .22s ease; }
+.m-menu a { display: block; padding: 13px 4px; font-size: .92rem; color: var(--text2); border-bottom: 1px solid var(--border); font-weight: 500; }
+.m-menu a:last-child { border: none; }
+.m-menu .m-cta { display: block; margin-top: 14px; background: var(--ink); color: var(--white); text-align: center; padding: 13px; border-radius: var(--r); font-weight: 600; }
+
+/* ── TICKER ───────────────────────────────────────── */
+.ticker { background: var(--rust); padding: 9px 0; overflow: hidden; }
+.ticker-track { display: flex; white-space: nowrap; animation: ticker 40s linear infinite; }
+.ticker-item { font-size: .71rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.85); padding: 0 30px; display: flex; align-items: center; gap: 0; }
+.ticker-item::after { content: ""; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,.4); margin-left: 30px; flex-shrink: 0; }
+
+/* ── HERO ─────────────────────────────────────────── */
+.hero { position: relative; min-height: 92vh; display: flex; align-items: center; overflow: hidden; background: var(--ink); }
+.hero-bg-img { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1800&q=80'); background-size: cover; background-position: center; opacity: .18; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(110deg, rgba(15,25,35,.96) 45%, rgba(15,25,35,.65) 80%, rgba(15,25,35,.4) 100%); }
+.hero-grid-lines { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px); background-size: 64px 64px; }
+.hero-inner { max-width: 1280px; margin: 0 auto; padding: 90px 28px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; position: relative; z-index: 1; width: 100%; }
+.hero-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(212,150,10,.12); border: 1px solid rgba(212,150,10,.3); color: var(--amber2); font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 7px 14px; border-radius: 40px; margin-bottom: 26px; }
+.hero-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--amber2); animation: pulse 2.2s infinite; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(2.3rem, 4.8vw, 3.9rem); color: var(--white); line-height: 1.12; letter-spacing: -.02em; margin-bottom: 22px; }
+.hero h1 span { color: var(--amber2); font-style: italic; }
+.hero-sub { font-size: 1rem; color: rgba(255,255,255,.6); line-height: 1.78; margin-bottom: 38px; max-width: 480px; font-weight: 300; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 50px; }
+.btn-rust { background: var(--rust); color: var(--white); padding: 13px 26px; border-radius: var(--r); font-weight: 600; font-size: .9rem; transition: all .22s; display: inline-flex; align-items: center; gap: 9px; border: none; cursor: pointer; }
+.btn-rust:hover { background: var(--rust2); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(184,74,26,.4); }
+.btn-ghost { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,.22); padding: 13px 26px; border-radius: var(--r); font-weight: 500; font-size: .9rem; transition: all .22s; display: inline-flex; align-items: center; gap: 9px; cursor: pointer; }
+.btn-ghost:hover { border-color: rgba(255,255,255,.55); background: rgba(255,255,255,.06); }
+.hero-stats { display: flex; gap: 0; border: 1px solid rgba(255,255,255,.09); border-radius: var(--r2); overflow: hidden; background: rgba(255,255,255,.04); }
+.h-stat { flex: 1; padding: 18px 22px; border-right: 1px solid rgba(255,255,255,.09); }
+.h-stat:last-child { border-right: none; }
+.h-stat-num { font-family: var(--font-display); font-size: 1.8rem; color: var(--amber2); line-height: 1; display: block; font-weight: 600; }
+.h-stat-lbl { font-size: .68rem; color: rgba(255,255,255,.42); text-transform: uppercase; letter-spacing: .07em; margin-top: 5px; display: block; }
+.hero-right { position: relative; animation: fadeUp 1s ease both .4s; }
+.hero-visual { position: relative; }
+.hero-main-img { width: 100%; height: 440px; object-fit: cover; border-radius: var(--r3); box-shadow: 0 32px 80px rgba(0,0,0,.45); }
+.hero-badge { position: absolute; bottom: -18px; left: -18px; background: var(--white); border-radius: var(--r2); padding: 16px 20px; box-shadow: 0 16px 48px rgba(15,25,35,.18); display: flex; align-items: center; gap: 12px; }
+.hb-icon { width: 38px; height: 38px; background: var(--sand); border-radius: var(--r); display: grid; place-items: center; }
+.hb-icon img { width: 22px; height: 22px; object-fit: contain; }
+.hb-text strong { display: block; font-size: .82rem; font-weight: 700; color: var(--ink); }
+.hb-text span { font-size: .7rem; color: var(--text3); }
+.hero-float { position: absolute; top: -14px; right: -14px; background: var(--rust); border-radius: var(--r2); padding: 14px 18px; box-shadow: 0 12px 40px rgba(184,74,26,.35); animation: float 5s ease-in-out infinite; }
+.hero-float strong { display: block; font-family: var(--font-display); font-size: 1.3rem; color: var(--white); }
+.hero-float span { font-size: .65rem; color: rgba(255,255,255,.7); text-transform: uppercase; letter-spacing: .07em; }
+
+/* ── SECTION BASE ─────────────────────────────────── */
+.section { padding: 88px 0; }
+.s-inner { max-width: 1280px; margin: 0 auto; padding: 0 28px; }
+.s-label { display: inline-flex; align-items: center; gap: 9px; font-size: .68rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--rust); margin-bottom: 10px; }
+.s-label::before { content: ""; width: 20px; height: 2px; background: var(--rust); border-radius: 2px; }
+.s-title { font-family: var(--font-display); font-size: clamp(1.7rem, 3.2vw, 2.55rem); color: var(--ink); letter-spacing: -.02em; line-height: 1.18; margin-bottom: 12px; }
+.s-sub { font-size: .94rem; color: var(--text2); max-width: 520px; line-height: 1.75; }
+
+/* ── ABOUT / FSSAI STRIP ──────────────────────────── */
+.about { background: var(--white); border-top: 4px solid var(--rust); }
+.about-inner { max-width: 1280px; margin: 0 auto; padding: 64px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.about-copy p { font-size: .93rem; color: var(--text2); line-height: 1.82; margin-bottom: 18px; }
+.about-copy p:last-of-type { margin-bottom: 0; }
+.about-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 26px; }
+.tag { background: var(--sand); border: 1px solid var(--sand3); color: var(--ink); font-size: .76rem; font-weight: 600; padding: 6px 14px; border-radius: 40px; }
+.about-card { background: linear-gradient(140deg, var(--ink), var(--ink2)); border-radius: var(--r3); overflow: hidden; position: relative; }
+.about-card-img { width: 100%; height: 240px; object-fit: cover; opacity: .35; }
+.about-card-body { padding: 28px 28px 32px; }
+.ac-cert { display: inline-flex; align-items: center; gap: 8px; background: rgba(212,150,10,.15); border: 1px solid rgba(212,150,10,.3); color: var(--amber2); font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 5px 12px; border-radius: 40px; margin-bottom: 14px; }
+.ac-cert-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--amber2); }
+.ac-title { font-family: var(--font-display); font-size: 1.25rem; color: var(--white); margin-bottom: 10px; }
+.ac-text  { font-size: .84rem; color: rgba(255,255,255,.6); line-height: 1.72; }
+.ac-stats { display: flex; gap: 24px; margin-top: 22px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.09); }
+.ac-s strong { display: block; font-family: var(--font-display); font-size: 1.5rem; color: var(--amber2); }
+.ac-s span   { font-size: .68rem; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: .06em; }
+
+/* ── OPS STRIP ────────────────────────────────────── */
+.ops { background: var(--sand2); padding: 0; }
+.ops-inner { max-width: 1280px; margin: 0 auto; padding: 0 28px; display: grid; grid-template-columns: repeat(3,1fr); }
+.op-card { padding: 52px 36px; border-right: 1px solid var(--sand3); position: relative; overflow: hidden; transition: background .3s; }
+.op-card:last-child { border-right: none; }
+.op-card:hover { background: var(--white); }
+.op-card::before { content: ""; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--rust); transition: height .4s cubic-bezier(.16,1,.3,1); }
+.op-card:hover::before { height: 100%; }
+.op-num { font-family: var(--font-display); font-size: 3.5rem; color: var(--sand3); font-weight: 700; line-height: 1; margin-bottom: 20px; }
+.op-img-wrap { width: 64px; height: 64px; border-radius: var(--r2); overflow: hidden; margin-bottom: 18px; border: 1px solid var(--sand3); }
+.op-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.op-title { font-weight: 700; color: var(--ink); font-size: 1rem; margin-bottom: 10px; }
+.op-desc  { font-size: .84rem; color: var(--text2); line-height: 1.7; }
+
+/* ── PRODUCTS SECTION ─────────────────────────────── */
+.products { background: var(--sand); }
+.prod-tabs { display: flex; gap: 0; border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden; background: var(--white); margin-bottom: 44px; width: fit-content; }
+.prod-tab { padding: 11px 24px; font-size: .83rem; font-weight: 600; color: var(--text2); cursor: pointer; transition: all .2s; border: none; background: none; }
+.prod-tab.active { background: var(--ink); color: var(--white); }
+.prod-tab:hover:not(.active) { background: var(--sand); }
+.prod-panel { display: none; }
+.prod-panel.active { display: block; }
+.prod-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+.prod-card { background: var(--white); border-radius: var(--r3); overflow: hidden; border: 1px solid var(--border); box-shadow: 0 2px 14px rgba(15,25,35,.04); transition: all .32s cubic-bezier(.16,1,.3,1); position: relative; }
+.prod-card:hover { transform: translateY(-7px); box-shadow: 0 24px 60px rgba(15,25,35,.12); border-color: var(--sand3); }
+.prod-img-wrap { height: 220px; overflow: hidden; background: var(--sand); display: flex; align-items: center; justify-content: center; position: relative; }
+.prod-img-wrap img { width: 100%; height: 100%; object-fit: contain; padding: 20px; transition: transform .5s cubic-bezier(.16,1,.3,1); }
+.prod-card:hover .prod-img-wrap img { transform: scale(1.06); }
+.prod-cat-badge { position: absolute; top: 14px; left: 14px; background: var(--ink); color: var(--white); font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border-radius: 40px; }
+.prod-body { padding: 22px 24px 26px; }
+.prod-name { font-family: var(--font-display); font-size: 1.1rem; color: var(--ink); margin-bottom: 8px; font-weight: 600; }
+.prod-desc { font-size: .82rem; color: var(--text2); line-height: 1.65; margin-bottom: 20px; }
+.prod-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-enquire { background: var(--ink); color: var(--white); padding: 9px 18px; border-radius: var(--r); font-size: .8rem; font-weight: 600; transition: all .2s; border: none; cursor: pointer; white-space: nowrap; display: inline-flex; align-items: center; gap: 7px; }
+.btn-enquire:hover { background: var(--rust); }
+.btn-wa { background: #25D366; color: var(--white); padding: 9px 18px; border-radius: var(--r); font-size: .8rem; font-weight: 600; transition: all .2s; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+.btn-wa:hover { background: #1aab54; }
+.wa-icon { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+
+/* ── MODAL ────────────────────────────────────────── */
+.modal-bg { position: fixed; inset: 0; background: rgba(15,25,35,.65); backdrop-filter: blur(4px); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
+.modal-bg.open { display: flex; animation: fadeIn .2s; }
+.modal { background: var(--white); border-radius: var(--r3); width: 100%; max-width: 500px; overflow: hidden; animation: fadeUp .3s ease; }
+.modal-header { background: var(--ink); padding: 22px 28px; display: flex; justify-content: space-between; align-items: center; }
+.modal-title { font-family: var(--font-display); color: var(--white); font-size: 1.1rem; }
+.modal-close { background: rgba(255,255,255,.1); border: none; color: var(--white); width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 1rem; display: grid; place-items: center; transition: background .2s; }
+.modal-close:hover { background: rgba(255,255,255,.22); }
+.modal-body { padding: 28px; }
+.modal-product { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--rust); margin-bottom: 18px; }
+.modal form { display: flex; flex-direction: column; gap: 13px; }
+.modal label { font-size: .75rem; font-weight: 600; color: var(--text2); text-transform: uppercase; letter-spacing: .04em; display: block; margin-bottom: 4px; }
+.modal input, .modal textarea, .modal select { width: 100%; background: var(--sand); border: 1.5px solid var(--border); border-radius: var(--r); padding: 11px 14px; font-size: .88rem; color: var(--text); font-family: var(--font-body); outline: none; transition: border-color .2s; -webkit-appearance: none; }
+.modal input:focus, .modal textarea:focus, .modal select:focus { border-color: var(--ink); }
+.modal textarea { resize: vertical; min-height: 80px; }
+.modal-row { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+.modal-submit { background: var(--ink); color: var(--white); border: none; border-radius: var(--r); padding: 13px; font-size: .88rem; font-weight: 700; cursor: pointer; transition: all .2s; margin-top: 4px; }
+.modal-submit:hover { background: var(--rust); }
+.modal-success { display: none; text-align: center; padding: 20px 0 10px; }
+.modal-success h3 { font-family: var(--font-display); font-size: 1.4rem; color: var(--ink); margin-bottom: 8px; }
+.modal-success p { font-size: .87rem; color: var(--text2); }
+
+/* ── GALLERY / TRADE SHOWCASE ─────────────────────── */
+.showcase { background: var(--ink); padding: 80px 0; }
+.showcase-inner { max-width: 1280px; margin: 0 auto; padding: 0 28px; }
+.showcase .s-label { color: var(--amber2); }
+.showcase .s-title { color: var(--white); }
+.showcase .s-sub { color: rgba(255,255,255,.55); margin-bottom: 40px; }
+.gallery-grid { display: grid; grid-template-columns: 1.8fr 1fr 1fr; grid-template-rows: 240px 240px; gap: 12px; }
+.gallery-item { border-radius: var(--r2); overflow: hidden; position: relative; }
+.gallery-item:first-child { grid-row: 1 / 3; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.16,1,.3,1); }
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-cap { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 18px 16px; background: linear-gradient(to top, rgba(15,25,35,.85), transparent); color: var(--white); font-size: .78rem; font-weight: 600; opacity: 0; transition: opacity .3s; }
+.gallery-item:hover .gallery-cap { opacity: 1; }
+
+/* ── WHY US ───────────────────────────────────────── */
+.why { background: var(--white); }
+.why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+.why-card { border: 1px solid var(--border); border-radius: var(--r2); padding: 30px 28px; transition: all .3s; position: relative; overflow: hidden; }
+.why-card::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--rust), var(--amber2)); transform: scaleX(0); transition: transform .35s; transform-origin: left; }
+.why-card:hover { box-shadow: 0 12px 44px rgba(15,25,35,.08); border-color: var(--sand3); }
+.why-card:hover::after { transform: scaleX(1); }
+.wc-num { font-family: var(--font-display); font-size: 2.8rem; color: var(--sand3); line-height: 1; margin-bottom: 16px; font-weight: 700; }
+.wc-title { font-weight: 700; color: var(--ink); font-size: .96rem; margin-bottom: 9px; }
+.wc-desc  { font-size: .83rem; color: var(--text2); line-height: 1.68; }
+
+/* ── CTA ──────────────────────────────────────────── */
+.cta-band { position: relative; overflow: hidden; padding: 88px 0; text-align: center; }
+.cta-band-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1600&q=80'); background-size: cover; background-position: center; }
+.cta-band-ov { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,25,35,.94) 0%, rgba(184,74,26,.85) 100%); }
+.cta-inner { max-width: 680px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+.cta-inner h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.7rem); color: var(--white); margin-bottom: 14px; letter-spacing: -.02em; }
+.cta-inner p { color: rgba(255,255,255,.65); font-size: .95rem; margin-bottom: 34px; line-height: 1.75; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-amber { background: var(--amber); color: var(--ink); padding: 13px 28px; border-radius: var(--r); font-weight: 700; font-size: .9rem; transition: all .2s; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+.btn-amber:hover { background: var(--amber2); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(212,150,10,.4); }
+.btn-wht { background: rgba(255,255,255,.1); color: var(--white); border: 1.5px solid rgba(255,255,255,.25); padding: 13px 28px; border-radius: var(--r); font-weight: 600; font-size: .9rem; transition: all .2s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-wht:hover { background: rgba(255,255,255,.2); }
+
+/* ── CONTACT ──────────────────────────────────────── */
+.contact { background: var(--sand2); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 52px; align-items: start; }
+.ci-list { display: flex; flex-direction: column; gap: 18px; }
+.ci-item { display: flex; gap: 14px; align-items: flex-start; }
+.ci-ico { width: 42px; height: 42px; background: var(--white); border-radius: var(--r); flex-shrink: 0; display: grid; place-items: center; border: 1px solid var(--border); }
+.ci-ico img { width: 18px; height: 18px; object-fit: contain; opacity: .7; }
+.ci-lbl { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--text3); margin-bottom: 3px; }
+.ci-val { font-size: .9rem; color: var(--ink); font-weight: 500; }
+.ci-val a { transition: color .2s; }
+.ci-val a:hover { color: var(--rust); }
+.hours-box { background: var(--white); border-radius: var(--r2); padding: 22px; border: 1px solid var(--border); }
+.hours-box h4 { font-size: .8rem; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+.hours-box p { font-size: .82rem; color: var(--text2); margin-bottom: 4px; }
+.hours-box small { font-size: .75rem; color: var(--text3); display: block; margin-top: 8px; }
+.contact-form { background: var(--white); border-radius: var(--r3); padding: 38px; border: 1px solid var(--border); }
+.cf-title { font-family: var(--font-display); font-size: 1.3rem; color: var(--ink); margin-bottom: 22px; }
+.cf-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 15px; }
+.cf-group label { font-size: .74rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--text2); }
+.cf-group input, .cf-group select, .cf-group textarea { background: var(--sand); border: 1.5px solid var(--border); border-radius: var(--r); padding: 11px 14px; font-size: .88rem; color: var(--text); font-family: var(--font-body); outline: none; transition: border-color .2s; -webkit-appearance: none; width: 100%; }
+.cf-group input:focus, .cf-group select:focus, .cf-group textarea:focus { border-color: var(--ink); background: var(--white); }
+.cf-group textarea { resize: vertical; min-height: 96px; }
+.cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.cf-submit { width: 100%; background: var(--ink); color: var(--white); border: none; border-radius: var(--r); padding: 14px; font-size: .9rem; font-weight: 700; cursor: pointer; transition: all .22s; letter-spacing: .02em; margin-top: 4px; }
+.cf-submit:hover { background: var(--rust); transform: translateY(-1px); box-shadow: 0 6px 22px rgba(184,74,26,.25); }
+
+/* ── FOOTER ───────────────────────────────────────── */
+.footer { background: var(--ink); padding: 58px 0 0; }
+.footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 28px; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 44px; }
+.f-brand .logo-name { color: var(--white); }
+.f-brand .logo-sub  { color: rgba(255,255,255,.35); }
+.f-brand p { font-size: .82rem; color: rgba(255,255,255,.5); line-height: 1.75; margin: 16px 0 22px; max-width: 270px; }
+.f-socials { display: flex; gap: 8px; }
+.f-social { width: 34px; height: 34px; border-radius: var(--r); background: rgba(255,255,255,.07); display: grid; place-items: center; color: rgba(255,255,255,.55); transition: all .2s; }
+.f-social:hover { background: var(--rust); color: var(--white); }
+.f-social img { width: 15px; height: 15px; object-fit: contain; filter: brightness(0) invert(1); opacity: .6; }
+.f-social:hover img { opacity: 1; }
+.f-col h4 { font-size: .73rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.38); margin-bottom: 16px; }
+.f-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.f-col ul li a { font-size: .84rem; color: rgba(255,255,255,.6); transition: color .2s; }
+.f-col ul li a:hover { color: var(--amber2); }
+.f-ci { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 11px; }
+.f-ci-ico { flex-shrink: 0; margin-top: 2px; }
+.f-ci-ico img { width: 13px; height: 13px; object-fit: contain; filter: brightness(0) invert(1); opacity: .4; }
+.f-ci a, .f-ci span { font-size: .82rem; color: rgba(255,255,255,.6); line-height: 1.5; transition: color .2s; }
+.f-ci a:hover { color: var(--amber2); }
+.footer-bottom { margin-top: 48px; border-top: 1px solid rgba(255,255,255,.06); padding: 16px 28px; text-align: center; }
+.footer-bottom p { font-size: .74rem; color: rgba(255,255,255,.32); }
+
+/* ── WHATSAPP FAB ─────────────────────────────────── */
+.wa-fab { position: fixed; bottom: 26px; right: 26px; z-index: 899; width: 54px; height: 54px; border-radius: 50%; background: #25D366; display: grid; place-items: center; box-shadow: 0 6px 24px rgba(37,211,102,.4); animation: float 5s ease-in-out infinite; transition: transform .25s, box-shadow .25s; }
+.wa-fab:hover { transform: scale(1.1) !important; box-shadow: 0 10px 32px rgba(37,211,102,.55); }
+.wa-fab svg { width: 26px; height: 26px; fill: white; }
+
+/* ── RESPONSIVE ───────────────────────────────────── */
+@media(max-width:1100px) {
+  .prod-grid { grid-template-columns: repeat(2,1fr); }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .gallery-item:first-child { grid-row: auto; }
+}
+@media(max-width:860px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .hero-inner { grid-template-columns: 1fr; gap: 0; padding: 64px 28px 52px; }
+  .hero-right { display: none; }
+  .hero h1 { font-size: 2.2rem; }
+  .about-inner { grid-template-columns: 1fr; gap: 34px; }
+  .ops-inner { grid-template-columns: 1fr; }
+  .op-card { border-right: none; border-bottom: 1px solid var(--sand3); }
+  .op-card:last-child { border-bottom: none; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .section { padding: 60px 0; }
+  .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .gallery-item { height: 220px; }
+}
+@media(max-width:580px) {
+  .prod-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 1.9rem; }
+  .hero-btns { flex-direction: column; align-items: flex-start; }
+  .btn-rust, .btn-ghost { width: 100%; justify-content: center; }
+  .cta-btns { flex-direction: column; align-items: center; }
+  .btn-amber, .btn-wht { width: 100%; justify-content: center; }
+  .cf-row { grid-template-columns: 1fr; }
+  .modal-row { grid-template-columns: 1fr; }
+  .contact-form { padding: 24px 20px; }
+  .hero-stats { flex-direction: column; gap: 0; }
+  .h-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,.09); }
+  .h-stat:last-child { border-bottom: none; }
+  .tb-right { display: none; }
+  .prod-tabs { width: 100%; }
+  .prod-tab { flex: 1; text-align: center; font-size: .75rem; padding: 10px 10px; }
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="tb-inner">
+    <div class="tb-left">
+      <a href="tel:+919999496242">
+        <svg class="tb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 015.13 12.7 19.79 19.79 0 012.06 4.11 2 2 0 014.07 2h3a2 2 0 012 1.72c.127.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +91 9999496242
+      </a>
+      <a href="mailto:kawatraimpex@gmail.com">
+        <svg class="tb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        kawatraimpex@gmail.com
+      </a>
+    </div>
+    <div class="tb-right">
+      <span class="tb-cert">FSSAI Certified</span>
+      <span class="tb-pvt">Registered Indian Pvt. Ltd.</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-text">
+        <span class="logo-name">Kawatra <span class="lo-orange">Impex.</span></span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#" onclick="showPage('home'); return false;" class="active" id="nav-home">Home</a>
+      <div class="dropdown">
+        <button class="drop-btn">
+          Categories
+          <svg class="drop-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="2,3 5,7 8,3"/></svg>
+        </button>
+        <div class="drop-menu">
+          <a href="#" onclick="showPage('imported'); return false;"><span class="drop-menu-dot"></span>Imported Products</a>
+          <a href="#" onclick="showPage('exports'); return false;"><span class="drop-menu-dot"></span>Export Spices</a>
+          <a href="#" onclick="showPage('rice'); return false;"><span class="drop-menu-dot"></span>Export Rice</a>
+        </div>
+      </div>
+      <a href="#" onclick="showPage('contact'); return false;" id="nav-contact">Contact Us</a>
+    </div>
+    <button class="nav-cta" onclick="openModal(null, 'General Enquiry')">
+      Enquire Now
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+    <button class="hamburger" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="m-menu" id="mMenu">
+    <a href="#" onclick="showPage('home'); closeMobile(); return false;">Home</a>
+    <a href="#" onclick="showPage('imported'); closeMobile(); return false;">Imported Products</a>
+    <a href="#" onclick="showPage('exports'); closeMobile(); return false;">Export Spices</a>
+    <a href="#" onclick="showPage('rice'); closeMobile(); return false;">Export Rice</a>
+    <a href="#" onclick="showPage('contact'); closeMobile(); return false;">Contact Us</a>
+    <a href="#" class="m-cta" onclick="openModal(null,'General Enquiry'); closeMobile(); return false;">Enquire Now</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════════ PAGE: HOME -->
+<div id="page-home">
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item">Biggest Rice Exporters in India</div>
+    <div class="ticker-item">FSSAI Certified</div>
+    <div class="ticker-item">Basmati &amp; Non-Basmati Rice</div>
+    <div class="ticker-item">Premium Indian Spices</div>
+    <div class="ticker-item">Global Imports to India</div>
+    <div class="ticker-item">Bulk Wholesale Enquiries Welcome</div>
+    <div class="ticker-item">New Delhi · India</div>
+    <div class="ticker-item">Biggest Rice Exporters in India</div>
+    <div class="ticker-item">FSSAI Certified</div>
+    <div class="ticker-item">Basmati &amp; Non-Basmati Rice</div>
+    <div class="ticker-item">Premium Indian Spices</div>
+    <div class="ticker-item">Global Imports to India</div>
+    <div class="ticker-item">Bulk Wholesale Enquiries Welcome</div>
+    <div class="ticker-item">New Delhi · India</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div style="animation: fadeUp .8s ease both;">
+      <div class="hero-pill"><span class="hero-pill-dot"></span>India's Trusted Trade Partner</div>
+      <h1>Connecting India<br>with the <span>Best Global</span><br>Products</h1>
+      <p class="hero-sub">At Kawatra Impex, we import premium products from around the world and proudly distribute them throughout India. We also export top-quality Indian goods — rice, spices and more — to international markets.</p>
+      <div class="hero-btns">
+        <button class="btn-rust" onclick="showPage('imported')">
+          View Products
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+        <button class="btn-ghost" onclick="showPage('contact')">Contact Us</button>
+      </div>
+      <div class="hero-stats">
+        <div class="h-stat">
+          <strong class="h-stat-num">10+</strong>
+          <span class="h-stat-lbl">Years in Trade</span>
+        </div>
+        <div class="h-stat">
+          <strong class="h-stat-num">3</strong>
+          <span class="h-stat-lbl">Trade Verticals</span>
+        </div>
+        <div class="h-stat">
+          <strong class="h-stat-num">Pvt. Ltd.</strong>
+          <span class="h-stat-lbl">Registered Entity</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-visual">
+        <img class="hero-main-img" src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=900&q=80" alt="Global shipping containers">
+        <div class="hero-badge">
+          <div class="hb-icon">
+            <img src="https://kawatraimpex.com/images/rice.png" alt="Rice">
+          </div>
+          <div class="hb-text">
+            <strong>Basmati Rice Exports</strong>
+            <span>Premium Grade — Global Supply</span>
+          </div>
+        </div>
+        <div class="hero-float">
+          <strong>FSSAI</strong>
+          <span>Certified</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="reveal">
+      <div class="s-label">Who We Are</div>
+      <h2 class="s-title">FSSAI Certified.<br>Globally Connected.</h2>
+      <p class="s-sub" style="margin-bottom:18px; max-width: 100%;">We are an FSSAI Certified, authorised company registered as an Indian Private Limited entity. We have successfully executed bulk imports from countries like Vietnam and China into India, ensuring the highest standards of quality and compliance.</p>
+      <p style="font-size:.93rem;color:var(--text2);line-height:1.82;margin-bottom:0;">Our operations span across global imports, domestic Indian distribution, and international exports of premium Indian produce. We pride ourselves on building lasting trade relationships built on trust, transparency, and timely delivery.</p>
+      <div class="about-tags">
+        <span class="tag">Import &amp; Export</span>
+        <span class="tag">Domestic Distribution</span>
+        <span class="tag">FSSAI Certified</span>
+        <span class="tag">Pvt. Ltd. Registered</span>
+        <span class="tag">Bulk Supply</span>
+        <span class="tag">Vietnam &amp; China Imports</span>
+      </div>
+    </div>
+    <div class="reveal d2">
+      <div class="about-card">
+        <img class="about-card-img" src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=700&q=80" alt="Shipping port">
+        <div class="about-card-body">
+          <div class="ac-cert"><span class="ac-cert-dot"></span>FSSAI Authorised</div>
+          <div class="ac-title">Your Premier Global Trading Enterprise</div>
+          <div class="ac-text">Bridging international markets while serving as a leading domestic distributor in India — from New Delhi to the world.</div>
+          <div class="ac-stats">
+            <div class="ac-s"><strong>India</strong><span>Registered Pvt Ltd</span></div>
+            <div class="ac-s"><strong>Global</strong><span>Import Sources</span></div>
+            <div class="ac-s"><strong>Bulk</strong><span>Wholesale Ready</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPS STRIP -->
+<div class="ops">
+  <div class="ops-inner">
+    <div class="op-card reveal">
+      <div class="op-num">01</div>
+      <div class="op-img-wrap">
+        <img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=200&q=80" alt="Global imports">
+      </div>
+      <div class="op-title">Global Imports</div>
+      <div class="op-desc">We source high-quality, in-demand products from international markets — including Vietnam and China — and bring them directly to our warehousing facilities in India.</div>
+    </div>
+    <div class="op-card reveal d2">
+      <div class="op-num">02</div>
+      <div class="op-img-wrap">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=80" alt="India distribution">
+      </div>
+      <div class="op-title">Domestic Sales in India</div>
+      <div class="op-desc">The premium products we import are distributed and sold across India, ensuring local consumers and businesses get the very best at competitive prices.</div>
+    </div>
+    <div class="op-card reveal d4">
+      <div class="op-num">03</div>
+      <div class="op-img-wrap">
+        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=200&q=80" alt="Global exports">
+      </div>
+      <div class="op-title">Global Exports</div>
+      <div class="op-desc">We export superior Indian materials and products — Basmati rice, premium spices, and more — to buyers worldwide at scale.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED PRODUCTS (HOME) -->
+<section class="section products">
+  <div class="s-inner">
+    <div class="s-label reveal">Featured Exports</div>
+    <h2 class="s-title reveal d1" style="margin-bottom:8px">Premium Quality Rice &amp; Spices<br>Ready for Global Distribution</h2>
+    <p class="s-sub reveal d2" style="margin-bottom:44px">Our flagship export products — handpicked, quality-assured, and available for bulk orders worldwide.</p>
+    <div class="prod-grid">
+      <div class="prod-card reveal">
+        <div class="prod-img-wrap">
+          <span class="prod-cat-badge">Export</span>
+          <img src="https://kawatraimpex.com/images/rice.png" alt="Rice">
+        </div>
+        <div class="prod-body">
+          <div class="prod-name">Rice (Basmati &amp; Non-Basmati)</div>
+          <div class="prod-desc">Aromatic long-grain Basmati and Non-Basmati rice varieties, harvested from India's finest paddy fields for global markets.</div>
+          <div class="prod-actions">
+            <button class="btn-enquire" onclick="openModal('Rice (Basmati & Non-Basmati)', 'Export Rice')">Order Query</button>
+            <a class="btn-wa" href="https://wa.me/919953331669?text=Need%20enquiry%20regarding%20this%20product:%20Basmati%20Rice" target="_blank">
+              <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card reveal d2">
+        <div class="prod-img-wrap">
+          <span class="prod-cat-badge">Export</span>
+          <img src="https://kawatraimpex.com/images/clove.png" alt="Clove">
+        </div>
+        <div class="prod-body">
+          <div class="prod-name">Clove</div>
+          <div class="prod-desc">Rich, aromatic cloves handpicked from premium Indian plantations — valued globally for their intense flavour and essential oil content.</div>
+          <div class="prod-actions">
+            <button class="btn-enquire" onclick="openModal('Clove', 'Export Spice')">Order Query</button>
+            <a class="btn-wa" href="https://wa.me/919953331669?text=Need%20enquiry%20regarding%20this%20product:%20Clove" target="_blank">
+              <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card reveal d3">
+        <div class="prod-img-wrap">
+          <span class="prod-cat-badge">Export</span>
+          <img src="https://kawatraimpex.com/images/black_pepper.png" alt="Black Pepper">
+        </div>
+        <div class="prod-body">
+          <div class="prod-name">Black Pepper</div>
+          <div class="prod-desc">The "King of Spices" — hand-picked Indian black pepper, exported globally for its bold flavour and superior quality.</div>
+          <div class="prod-actions">
+            <button class="btn-enquire" onclick="openModal('Black Pepper', 'Export Spice')">Order Query</button>
+            <a class="btn-wa" href="https://wa.me/919953331669?text=Need%20enquiry%20regarding%20this%20product:%20Black%20Pepper" target="_blank">
+              <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px;">
+      <button class="btn-rust" onclick="showPage('exports')" style="display:inline-flex;">
+        View All Products
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- TRADE SHOWCASE / GALLERY -->
+<section class="showcase">
+  <div class="showcase-inner">
+    <div class="s-label reveal">Global Trade Showcase</div>
+    <h2 class="s-title reveal d1">From Indian Farms to<br>International Markets</h2>
+    <p class="s-sub reveal d2">Our supply chain connects India's finest producers with buyers across the globe — from rice paddies to container shipping, farm to port.</p>
+    <div class="gallery-grid reveal d3">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=900&q=80" alt="Shipping containers">
+        <div class="gallery-cap">Global Container Logistics</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&q=80" alt="Indian spices">
+        <div class="gallery-cap">Premium Indian Spices</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=600&q=80" alt="Port operations">
+        <div class="gallery-cap">International Port Operations</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&q=80" alt="Basmati rice">
+        <div class="gallery-cap">Basmati Rice Supply Chain</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Bulk cargo freight">
+        <div class="gallery-cap">Bulk Export Cargo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section why">
+  <div class="s-inner">
+    <div class="s-label reveal">Why Kawatra Impex</div>
+    <h2 class="s-title reveal d1" style="margin-bottom:40px">Trusted by Businesses<br>Across India &amp; Beyond</h2>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="wc-num">01</div>
+        <div class="wc-title">FSSAI Certified Operations</div>
+        <div class="wc-desc">Fully authorised and FSSAI-certified for food import and distribution in India — ensuring every product meets the highest safety and compliance standards.</div>
+      </div>
+      <div class="why-card reveal d1">
+        <div class="wc-num">02</div>
+        <div class="wc-title">Proven Bulk Import Track Record</div>
+        <div class="wc-desc">Successfully executed large-scale bulk imports from Vietnam, China, and beyond, with documented compliance and quality assurance at every stage.</div>
+      </div>
+      <div class="why-card reveal d2">
+        <div class="wc-num">03</div>
+        <div class="wc-title">End-to-End Trade Solutions</div>
+        <div class="wc-desc">From sourcing and customs clearance to domestic warehousing and last-mile distribution — we handle the full trade lifecycle under one roof.</div>
+      </div>
+      <div class="why-card reveal d3">
+        <div class="wc-num">04</div>
+        <div class="wc-title">Premium Indian Export Produce</div>
+        <div class="wc-desc">Our Basmati rice, black pepper, cloves, cumin and other spices are sourced direct from India's best-producing regions and packed to international standards.</div>
+      </div>
+      <div class="why-card reveal d4">
+        <div class="wc-num">05</div>
+        <div class="wc-title">Responsive &amp; Transparent</div>
+        <div class="wc-desc">We believe in clear communication, honest pricing, and responsive service. Your enquiry is attended to by our core team — no intermediaries.</div>
+      </div>
+      <div class="why-card reveal d5">
+        <div class="wc-num">06</div>
+        <div class="wc-title">Registered Private Limited Company</div>
+        <div class="wc-desc">Operating as a formally registered Indian Private Limited company with full legal standing for B2B and B2C transactions nationally and internationally.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOME TRADE MAP -->
+<section style="background:var(--sand2);padding:80px 0;">
+  <div class="s-inner">
+    <div class="s-label reveal">Global Reach</div>
+    <h2 class="s-title reveal d1" style="margin-bottom:8px">Our Trade Network</h2>
+    <p class="s-sub reveal d2" style="margin-bottom:36px">Importing from Vietnam &amp; China · Exporting Indian goods worldwide · Headquartered in New Delhi</p>
+    <div class="reveal d3" style="border-radius:var(--r3);overflow:hidden;background:var(--ink);">
+      <canvas id="homeTradeMapCanvas" style="width:100%;display:block;"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="cta-band-bg"></div>
+  <div class="cta-band-ov"></div>
+  <div class="cta-inner">
+    <h2 class="reveal">Interested in Doing Business?</h2>
+    <p class="reveal d1">Whether you want to buy our imported products in India or discuss export opportunities, our team is ready to assist with quotations, samples, and full trade support.</p>
+    <div class="cta-btns reveal d2">
+      <button class="btn-amber" onclick="showPage('contact')">Contact Us Today</button>
+      <a class="btn-wht" href="https://wa.me/919999496242?text=Hi,%20Kawatra%20Impex%20....%20I%20Have%20some%20queries%20regarding%20Business" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg>
+        WhatsApp Enquiry
+      </a>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page-home -->
+
+<!-- ════════════════════════════════════════════════════ PAGE: IMPORTED -->
+<div id="page-imported" style="display:none;">
+<section class="section" style="background:var(--sand);padding-top:70px;">
+  <div class="s-inner">
+    <div class="s-label">Imports</div>
+    <h1 class="s-title" style="margin-bottom:10px">Imported Products</h1>
+    <p class="s-sub" style="margin-bottom:44px">Carefully sourced international products brought directly to the Indian market.</p>
+
+    <!-- Imported Foods -->
+    <h3 style="font-family:var(--font-display);font-size:1.3rem;color:var(--ink);margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--border);">Food &amp; Beverage Imports</h3>
+    <div class="prod-grid" style="margin-bottom:48px">
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <span class="prod-cat-badge">Import</span>
+          <img src="https://kawatraimpex.com/images/40162949_1-indomie-instant-noodle-chicken-flavour.webp" alt="Indomie Instant Noodles">
+        </div>
+        <div class="prod-body">
+          <div class="prod-name">Indomie Instant Noodles</div>
+          <div class="prod-desc">Premium imported Chicken Flavour noodles, highly demanded in India. Sourced directly for consistent bulk availability.</div>
+          <div class="prod-actions">
+            <button class="btn-enquire" onclick="openModal('Indomie Instant Noodles','Imported Product')">Order Query</button>
+            <a class="btn-wa" href="https://wa.me/919953331669?text=Need%20enquiry%20regarding%20this%20product:%20Indomie%20Instant%20Noodles" target="_blank">
+              <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <span class="prod-cat-badge">Import</span>
+          <img src="https://kawatraimpex.com/images/41j-K+MGc5S.jpg" alt="Vinut SourSop">
+        </div>
+        <div class="prod-body">
+          <div class="prod-name">Vinut SourSop</div>
+          <div class="prod-desc">High-quality packaged drink imported from Vietnam. Available in 330ml cans — premium tropical beverage for the Indian retail market.</div>
+          <div class="prod-actions">
+            <button class="btn-enquire" onclick="openModal('Vinut SourSop','Imported Product')">Order Query</button>
+            <a class="btn-wa" href="https://wa.me/919953331669?text=Need%20enquiry%20regarding%20this%20product:%20Vinut%20SourSop" target="_blank">
+              <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Women Accessories -->
+    <h3 style="font-family:var(--font-display);font-size:1.3rem;color:var(--ink);margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--border);">Women Accessories</h3>
+    <p style="font-size:.88rem;color:var(--text2);margin-bottom:28px;max-width:600px;">Imported intimate wear and beauty essentials for women — available for bulk retail distribution across India.</p>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-img-wrap" style="background:#f9f0f5;">
+          <span class="prod-cat-badge">Import</span>
+          <img src="https://kawatraimpex.com/images/women accessories/Adhesive Bra.jpeg" alt="Adhesive Bra" style="object-fit:cover;padding:0;">
+        </div>
+        <div class="prod-body">
+          <div class="prod-name">Adhesive Bra</div>
+          <div class="prod-desc">Strapless, backless adhesive bra for a seamless look under any outfit. Skin-safe and reusable.</div>
+          <div class="prod-actions">
+            <button class="btn-enquire" onclick="openModal('Adhesive Bra','Imported Product')">Order Query</button>
+            <a class="btn-wa" href="https://wa.me/919953331669?text=Need%20enquiry%20regarding%20this%20product:%20Adhesive%20Bra" target="_blank"><svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg> WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap" style="background:#f9f0f5;">
+          <span class="prod-cat-badge">Import</span>
+          <img src="https://kawatraimpex.com/images/women accessories/Boob Tape.jpeg" alt="Boob Tape" style="object-fit:cover;padding:0;">
+        </div>
+        <div class="prod-body">
+          <div class="prod-name">Boob Tape</div>
+          <div class="prod-desc">Strong, skin-safe fashion tape for ultimate support and confidence. Suitable for all skin types.</div>
+          <div class="prod-actions">
+            <button class="btn-enquire" onclick="openModal('Boob Tape','Imported Product')">Order Query</button>
+            <a class="btn-wa" href="https://wa.me/919953331669?text=Need%20enquiry%20regarding%20this%20product:%20Boob%20Tape" target="_blank"><svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg> WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap" style="background:#f9f0f5;">
+          <span class="prod-cat-badge">Import</span>
+          <img src="https://kawatraimpex.com/images/women accessories/Makeup Brush Kit.jpeg" alt="Makeup Brush Kit" style="object-fit:cover;padding:0;">
+        </div>
+        <div class="prod-body">
+          <div class="prod-name">Makeup Brush Kit</div>
+          <div class="prod-desc">Professional-grade makeup brush set for flawless blending and application. Imported and retail-ready.</div>
+          <div class="prod-actions">
+            <button class="btn-enquire" onclick="openModal('Makeup Brush Kit','Imported Product')">Order Query</button>
+            <a class="btn-wa" href="https://wa.me/919953331669?text=Need%20enquiry%20regarding%20this%20product:%20Makeup%20Brush%20Kit" target="_blank"><svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg> WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap" style="background:#f9f0f5;">
+          <span class="prod-cat-badge">Import</span>
+          <img src="https://kawatraimpex.com/images/women accessories/Nipple pasties.jpeg" alt="Nipple Pasties" style="object-fit:cover;padding:0;">
+        </div>
+        <div class="prod-body">
+          <div class="prod-name">Nipple Pasties</div>
+          <div class="prod-desc">Discreet, reusable pasties for coverage and comfort under sheer fabrics. Premium quality, skin-safe adhesive.</div>
+          <div class="prod-actions">
+            <button class="btn-enquire" onclick="openModal('Nipple Pasties','Imported Product')">Order Query</button>
+            <a class="btn-wa" href="https://wa.me/919953331669?text=Need%20enquiry%20regarding%20this%20product:%20Nipple%20Pasties" target="_blank"><svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg> WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap" style="background:#f9f0f5;">
+          <span class="prod-cat-badge">Import</span>
+          <img src="https://kawatraimpex.com/images/women accessories/Silicon Nipple cover.jpeg" alt="Silicon Nipple Cover" style="object-fit:cover;padding:0;">
+        </div>
+        <div class="prod-body">
+          <div class="prod-name">Silicon Nipple Cover</div>
+          <div class="prod-desc">Soft, reusable silicone covers for a smooth, invisible finish. Comfortable and long-lasting for everyday use.</div>
+          <div class="prod-actions">
+            <button class="btn-enquire" onclick="openModal('Silicon Nipple Cover','Imported Product')">Order Query</button>
+            <a class="btn-wa" href="https://wa.me/919953331669?text=Need%20enquiry%20regarding%20this%20product:%20Silicon%20Nipple%20Cover" target="_blank"><svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg> WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px;">
+      <button class="btn-rust" onclick="showPage('contact')" style="display:inline-flex;">Inquire About Imports</button>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ════════════════════════════════════════════════════ PAGE: EXPORTS -->
+<div id="page-exports" style="display:none;">
+<section class="section" style="background:var(--sand);padding-top:70px;">
+  <div class="s-inner">
+    <div class="s-label">Exports</div>
+    <h1 class="s-title" style="margin-bottom:10px">Export Products</h1>
+    <p class="s-sub" style="margin-bottom:44px">Authentic, high-grade Indian spices and grains harvested for international export.</p>
+    <div class="prod-grid">
+      <div class="prod-card"><div class="prod-img-wrap"><span class="prod-cat-badge">Export</span><img src="https://kawatraimpex.com/images/Cardamon.png" alt="Cardamon"></div><div class="prod-body"><div class="prod-name">Cardamon</div><div class="prod-desc">Premium Indian Cardamon pods, known for their intense aroma and flavour — sourced from the finest plantations.</div><div class="prod-actions"><button class="btn-enquire" onclick="openModal('Cardamon','Export Spice')">Order Query</button><a class="btn-wa" href="https://wa.me/919953331669?text=Need%20enquiry%20regarding%20this%20product:%20Cardamon" target="_blank"><svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg> WhatsApp</a></div></div></div>
+      <div class="prod-card"><div class="prod-img-wrap"><span class="prod-cat-badge">Export</span><img src="https://kawatraimpex.com/images/Mustard Seed.png" alt="Mustard Seed"></div><div class="prod-body"><div class="prod-name">Mustard Seed</div><div class="prod-desc">High-quality mustard seeds sourced from the finest Indian farms, ready for international bulk export.</div><div class="prod-actions"><button class="btn-enquire" onclick="openModal('Mustard Seed','Export Spice')">Order Query</button><a class="btn-wa" href="https://wa.me/919953331669?text=Need%20enquiry%20regarding%20this%20product:%20Mustard%20Seed" target="_blank"><svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg> WhatsApp</a></div></div></div>
+      <div class="prod-card"><div class="prod-img-wrap"><span class="prod-cat-badge">Export</span><img src="https://kawatraimpex.com/images/black_pepper.png" alt="Black Pepper"></div><div class="prod-body"><div class="prod-name">Black Pepper</div><div class="prod-desc">The "King of Spices" — hand-picked black pepper for global export. Bold flavour and superior grade.</div><div class="prod-actions"><button class="btn-enquire" onclick="openModal('Black Pepper','Export Spice')">Order Query</button><a class="btn-wa" href="https://wa.me/919953331669?text=Need%20enquiry%20regarding%20this%20product:%20Black%20Pepper" target="_blank"><svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg> WhatsApp</a></div></div></div>
+      <div class="prod-card"><div class="prod-img-wrap"><span class="prod-cat-badge">Export</span><img src="https://kawatraimpex.com/images/cumin.png" alt="Cumin"></div><div class="prod-body"><div class="prod-name">Cumin</div><div class="prod-desc">Aromatic cumin seeds with high essential oil content, perfect for international food export.</div><div class="prod-actions"><button class="btn-enquire" onclick="openModal('Cumin','Export Spice')">Order Query</button><a class="btn-wa" href="https://wa.me/919953331669?text=Need%20enquiry%20regarding%20this%20product:%20Cumin" target="_blank"><svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg> WhatsApp</a></div></div></div>
+      <div class="prod-card"><div class="prod-img-wrap"><span class="prod-cat-badge">Export</span><img src="https://kawatraimpex.com/images/turmeric.png" alt="Turmeric"></div><div class="prod-body"><div class="prod-name">Turmeric</div><div class="prod-desc">High-curcumin turmeric powder and fingers for culinary and health use — a premium Indian export.</div><div class="prod-actions"><button class="btn-enquire" onclick="openModal('Turmeric','Export Spice')">Order Query</button><a class="btn-wa" href="https://wa.me/919953331669?text=Need%20enquiry%20regarding%20this%20product:%20Turmeric" target="_blank"><svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg> WhatsApp</a></div></div></div>
+      <div class="prod-card"><div class="prod-img-wrap"><span class="prod-cat-badge">Export</span><img src="https://kawatraimpex.com/images/rice.png" alt="Basmati Rice"></div><div class="prod-body"><div class="prod-name">Basmati Rice</div><div class="prod-desc">Aromatic long-grain Basmati and Non-Basmati rice varieties for global markets — India's finest.</div><div class="prod-actions"><button class="btn-enquire" onclick="openModal('Basmati Rice','Export Rice')">Order Query</button><a class="btn-wa" href="https://wa.me/919953331669?text=Need%20enquiry%20regarding%20this%20product:%20Basmati%20Rice" target="_blank"><svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg> WhatsApp</a></div></div></div>
+    </div>
+    <div style="text-align:center;margin-top:36px;"><button class="btn-rust" onclick="openModal(null,'Bulk Export Quote')" style="display:inline-flex;">Request Bulk Quote</button></div>
+  </div>
+</section>
+</div>
+
+<!-- ════════════════════════════════════════════════════ PAGE: RICE -->
+<div id="page-rice" style="display:none;">
+<section class="section" style="background:var(--sand);padding-top:70px;">
+  <div class="s-inner">
+    <div class="s-label">Export Rice</div>
+    <h1 class="s-title" style="margin-bottom:10px">Export Rice</h1>
+    <p class="s-sub" style="margin-bottom:44px">Premium Indian Rice varieties harvested for international export. One of India's biggest rice exporters.</p>
+    <div class="prod-grid" style="max-width:440px;">
+      <div class="prod-card"><div class="prod-img-wrap"><span class="prod-cat-badge">Export</span><img src="https://kawatraimpex.com/images/rice.png" alt="Basmati Rice"></div><div class="prod-body"><div class="prod-name">Rice (Basmati &amp; Non-Basmati)</div><div class="prod-desc">Aromatic long-grain Basmati and Non-Basmati rice varieties, meticulously sourced from India's finest paddy regions for global markets.</div><div class="prod-actions"><button class="btn-enquire" onclick="openModal('Rice (Basmati & Non-Basmati)','Export Rice')">Order Query</button><a class="btn-wa" href="https://wa.me/919953331669?text=Need%20enquiry%20regarding%20this%20product:%20Basmati%20Rice" target="_blank"><svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg> WhatsApp</a></div></div></div>
+    </div>
+    <div style="margin-top:36px;"><button class="btn-rust" onclick="openModal(null,'Bulk Rice Quote')" style="display:inline-flex;">Request Bulk Quote</button></div>
+  </div>
+</section>
+</div>
+
+<!-- ════════════════════════════════════════════════════ PAGE: CONTACT -->
+<div id="page-contact" style="display:none;">
+<section class="section contact" style="padding-top:70px;">
+  <div class="s-inner">
+    <div class="s-label">Get In Touch</div>
+    <h1 class="s-title" style="margin-bottom:40px">Contact Kawatra Impex</h1>
+    <div class="contact-grid">
+      <div class="ci-list">
+        <div class="ci-item">
+          <div class="ci-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 015.13 12.7 19.79 19.79 0 012.06 4.11 2 2 0 014.07 2h3a2 2 0 012 1.72c.127.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><div class="ci-lbl">Phone</div><div class="ci-val"><a href="tel:+919999496242">+91 9999496242</a> &nbsp;/&nbsp; <a href="tel:+917011601819">+91 7011601819</a></div></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="ci-lbl">Email</div><div class="ci-val"><a href="mailto:kawatraimpex@gmail.com">kawatraimpex@gmail.com</a></div></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="ci-lbl">Headquarters</div><div class="ci-val">New Delhi, India</div></div>
+        </div>
+        <div class="hours-box">
+          <h4>Business Hours</h4>
+          <p>Monday – Saturday: 9:00 AM – 6:00 PM IST</p>
+          <small>For faster response, reach us on WhatsApp.</small>
+        </div>
+        <a href="https://wa.me/919999496242?text=Hi,%20Kawatra%20Impex%20....%20I%20Have%20some%20queries%20regarding%20Business" target="_blank" class="btn-wa" style="width:fit-content;padding:13px 22px;border-radius:var(--r);font-size:.88rem;">
+          <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg>
+          WhatsApp Us Directly
+        </a>
+      </div>
+      <div class="contact-form">
+        <div class="cf-title">Send an Enquiry</div>
+        <div class="cf-row">
+          <div class="cf-group"><label>Full Name</label><input type="text" placeholder="Your name"></div>
+          <div class="cf-group"><label>Company</label><input type="text" placeholder="Company (optional)"></div>
+        </div>
+        <div class="cf-row">
+          <div class="cf-group"><label>Contact Number</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+          <div class="cf-group"><label>Email Address</label><input type="email" placeholder="you@email.com"></div>
+        </div>
+        <div class="cf-group"><label>Location (City / Country)</label><input type="text" placeholder="e.g. Dubai, UAE"></div>
+        <div class="cf-group"><label>Product Interest</label>
+          <select>
+            <option value="">Select a product category</option>
+            <option>Rice (Basmati &amp; Non-Basmati)</option>
+            <option>Clove</option>
+            <option>Black Pepper</option>
+            <option>Cardamon</option>
+            <option>Cumin</option>
+            <option>Turmeric</option>
+            <option>Mustard Seed</option>
+            <option>Indomie Instant Noodles</option>
+            <option>Vinut SourSop Drink</option>
+            <option>Women Accessories</option>
+            <option>Multiple / Other</option>
+          </select>
+        </div>
+        <div class="cf-group"><label>Quantity / Order Size</label><input type="text" placeholder="e.g. 500 MT, 10,000 units"></div>
+        <div class="cf-group"><label>Message</label><textarea placeholder="Describe your requirement, destination port, packaging preference…"></textarea></div>
+        <button class="cf-submit" onclick="handleContactSubmit(this)">Submit Enquiry</button>
+      </div>
+    </div>
+    <!-- MAP SECTION -->
+    <div style="margin-top:52px;">
+      <!-- Google Maps embed -->
+      <div class="s-label" style="margin-bottom:14px;">Find Our Office</div>
+      <div style="border-radius:var(--r3);overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 24px rgba(15,25,35,.08);">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.1727403683403!2d77.06169557495645!3d28.624584484442554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d0592d8b1d6f1%3A0x4b49c9cd67540c8c!2sKawatra%20Impex%20Private%20Limited!5e0!3m2!1sen!2sin!4v1778815193297!5m2!1sen!2sin"
+          width="100%" height="450" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ════════════════════════════════════════════════════ FOOTER (always visible) -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="f-brand">
+      <div class="logo">
+        <div class="logo-text">
+          <span class="logo-name" style="color:var(--white);">Kawatra <span class="lo-orange">Impex.</span></span>
+        </div>
+      </div>
+      <p>Your premier global trading enterprise, bridging international markets while serving as a leading domestic distributor in India.</p>
+      <div class="f-socials">
+        <a href="mailto:kawatraimpex@gmail.com" class="f-social" title="Email">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <a href="tel:+919999496242" class="f-social" title="Phone">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 015.13 12.7 19.79 19.79 0 012.06 4.11 2 2 0 014.07 2h3a2 2 0 012 1.72c.127.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </a>
+        <a href="https://wa.me/919999496242" class="f-social" title="WhatsApp" target="_blank">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="f-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#" onclick="showPage('home'); return false;">Home</a></li>
+        <li><a href="#" onclick="showPage('imported'); return false;">Imported Products</a></li>
+        <li><a href="#" onclick="showPage('exports'); return false;">Export Spices</a></li>
+        <li><a href="#" onclick="showPage('rice'); return false;">Export Rice</a></li>
+        <li><a href="#" onclick="showPage('contact'); return false;">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#" onclick="showPage('rice'); return false;">Basmati Rice</a></li>
+        <li><a href="#" onclick="showPage('exports'); return false;">Black Pepper</a></li>
+        <li><a href="#" onclick="showPage('exports'); return false;">Cardamon</a></li>
+        <li><a href="#" onclick="showPage('exports'); return false;">Cumin</a></li>
+        <li><a href="#" onclick="showPage('exports'); return false;">Turmeric</a></li>
+        <li><a href="#" onclick="showPage('imported'); return false;">Imported Goods</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>Contact</h4>
+      <div class="f-ci">
+        <span class="f-ci-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 015.13 12.7 19.79 19.79 0 012.06 4.11 2 2 0 014.07 2h3a2 2 0 012 1.72c.127.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></span>
+        <div><a href="tel:+919999496242">+91 9999496242</a><br><a href="tel:+917011601819">+91 7011601819</a></div>
+      </div>
+      <div class="f-ci">
+        <span class="f-ci-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+        <a href="mailto:kawatraimpex@gmail.com">kawatraimpex@gmail.com</a>
+      </div>
+      <div class="f-ci">
+        <span class="f-ci-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <span>New Delhi, India</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Kawatra Impex. All rights reserved. &nbsp;·&nbsp; FSSAI Certified &nbsp;·&nbsp; Registered Indian Pvt. Ltd. &nbsp;·&nbsp; New Delhi, India</p>
+  </div>
+</footer>
+
+<!-- ORDER MODAL -->
+<div class="modal-bg" id="modalBg" onclick="closeModalBg(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Order Query — Kawatra Impex</div>
+      <button class="modal-close" onclick="closeModal()">&#215;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-product" id="modalProduct">Product</div>
+      <div id="modalForm">
+        <form onsubmit="submitModal(event)">
+          <div class="modal-row">
+            <div><label>Your Name *</label><input type="text" required placeholder="Full name"></div>
+            <div><label>Company</label><input type="text" placeholder="Optional"></div>
+          </div>
+          <div><label>Contact Number *</label><input type="tel" required placeholder="+91 XXXXX XXXXX"></div>
+          <div><label>Location (City / Country) *</label><input type="text" required placeholder="e.g. Mumbai, India"></div>
+          <div><label>Email Address *</label><input type="email" required placeholder="you@email.com"></div>
+          <div><label>Quantity / Order Size</label><input type="text" placeholder="e.g. 100 MT, 1000 cartons"></div>
+          <div><label>Price Enquiry &amp; Details</label><textarea placeholder="Describe your requirements…"></textarea></div>
+          <button type="submit" class="modal-submit">Submit Inquiry</button>
+          <p style="font-size:.72rem;color:var(--text3);margin-top:10px;text-align:center;">Or email directly: <a href="mailto:kawatraimpex@gmail.com" style="color:var(--rust);">kawatraimpex@gmail.com</a></p>
+        </form>
+      </div>
+      <div class="modal-success" id="modalSuccess">
+        <h3>Submission Successful!</h3>
+        <p>Our team at Kawatra Impex will contact you soon.</p>
+        <button class="modal-submit" onclick="closeModal()" style="margin-top:16px;width:auto;padding:10px 24px;">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/919999496242?text=Hi,%20Kawatra%20Impex%20....%20I%20Have%20some%20queries%20regarding%20Business" class="wa-fab" target="_blank" title="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg>
+</a>
+
+<script>
+// ── SCROLL PROGRESS ──
+const prog = document.getElementById('prog');
+window.addEventListener('scroll', () => {
+  const s = document.documentElement;
+  prog.style.width = (s.scrollTop / (s.scrollHeight - s.clientHeight) * 100) + '%';
+});
+
+// ── REVEAL ON SCROLL ──
+const obs = new IntersectionObserver(entries =>
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); }),
+  { threshold: 0.1 }
+);
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ── HAMBURGER ──
+const ham = document.getElementById('ham');
+const mMenu = document.getElementById('mMenu');
+ham.addEventListener('click', () => { ham.classList.toggle('open'); mMenu.classList.toggle('open'); });
+function closeMobile() { ham.classList.remove('open'); mMenu.classList.remove('open'); }
+
+// ── PAGE ROUTING ──
+const pages = ['home','imported','exports','rice','contact'];
+function showPage(id) {
+  pages.forEach(p => {
+    const el = document.getElementById('page-' + p);
+    if(el) el.style.display = p === id ? '' : 'none';
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // reset reveals on new page
+  setTimeout(() => {
+    document.querySelectorAll('.reveal').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if(rect.top < window.innerHeight) el.classList.add('on');
+    });
+  }, 100);
+}
+
+// ── MODAL ──
+let currentProduct = '';
+function openModal(product, category) {
+  currentProduct = product || category || 'General';
+  document.getElementById('modalProduct').textContent = (product ? product + ' — ' : '') + (category || '');
+  document.getElementById('modalForm').style.display = '';
+  document.getElementById('modalSuccess').style.display = 'none';
+  document.getElementById('modalBg').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalBg').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalBg(e) { if(e.target === e.currentTarget) closeModal(); }
+function submitModal(e) {
+  e.preventDefault();
+  document.getElementById('modalForm').style.display = 'none';
+  document.getElementById('modalSuccess').style.display = 'block';
+}
+
+// ── CONTACT FORM ──
+function handleContactSubmit(btn) {
+  btn.textContent = 'Enquiry Sent — We\'ll be in touch!';
+  btn.style.background = '#1a5c38';
+  setTimeout(() => { btn.textContent = 'Submit Enquiry'; btn.style.background = ''; }, 4000);
+}
+
+// ── SMOOTH ANCHOR SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if(id === '#') return;
+    const target = document.querySelector(id);
+    if(target) { e.preventDefault(); window.scrollTo({ top: target.getBoundingClientRect().top + scrollY - 76, behavior: 'smooth' }); }
+  });
+});
+
+// ── TRADE MAP CANVAS (shared renderer) ──
+(function() {
+  // Continent polygons in [0–1] normalized coords
+  const continents = [
+    [[0.05,0.20],[0.12,0.15],[0.20,0.17],[0.22,0.30],[0.18,0.44],[0.12,0.52],[0.07,0.48],[0.03,0.36]], // N.America
+    [[0.12,0.54],[0.19,0.52],[0.22,0.60],[0.20,0.74],[0.14,0.82],[0.09,0.77],[0.08,0.64]], // S.America
+    [[0.41,0.15],[0.50,0.11],[0.54,0.15],[0.52,0.25],[0.46,0.30],[0.41,0.28]], // Europe
+    [[0.43,0.31],[0.54,0.29],[0.58,0.35],[0.56,0.53],[0.52,0.67],[0.47,0.69],[0.42,0.61],[0.40,0.45]], // Africa
+    [[0.54,0.11],[0.72,0.09],[0.84,0.15],[0.86,0.27],[0.78,0.33],[0.68,0.35],[0.58,0.33],[0.54,0.27]], // Asia
+    [[0.59,0.31],[0.66,0.29],[0.70,0.33],[0.68,0.45],[0.63,0.51],[0.58,0.49],[0.57,0.39]], // India
+    [[0.72,0.33],[0.80,0.31],[0.82,0.39],[0.76,0.45],[0.70,0.43]], // SE Asia
+    [[0.74,0.59],[0.84,0.56],[0.88,0.63],[0.86,0.73],[0.78,0.77],[0.72,0.73],[0.70,0.65]], // Australia
+    [[0.54,0.27],[0.62,0.25],[0.65,0.31],[0.62,0.37],[0.55,0.37]], // Middle East
+  ];
+
+  const INDIA   = [0.635, 0.41];
+  const VIETNAM = [0.775, 0.38];
+  const CHINA   = [0.760, 0.21];
+  const UAE     = [0.600, 0.33];
+  const EUROPE  = [0.460, 0.21];
+  const USA     = [0.140, 0.27];
+  const AFRICA  = [0.500, 0.53];
+  const AUS     = [0.790, 0.65];
+
+  const exportRoutes = [
+    { from:INDIA, to:UAE,    color:'#D4960A', speed:0.012, phase:0.00, label:'UAE'       },
+    { from:INDIA, to:EUROPE, color:'#D4960A', speed:0.009, phase:0.20, label:'Europe'    },
+    { from:INDIA, to:USA,    color:'#D4960A', speed:0.007, phase:0.40, label:'USA'       },
+    { from:INDIA, to:AFRICA, color:'#D4960A', speed:0.010, phase:0.60, label:'Africa'    },
+    { from:INDIA, to:AUS,    color:'#D4960A', speed:0.008, phase:0.80, label:'Australia' },
+  ];
+  const importRoutes = [
+    { from:VIETNAM, to:INDIA, color:'#B84A1A', speed:0.014, phase:0.10, label:'Vietnam' },
+    { from:CHINA,   to:INDIA, color:'#B84A1A', speed:0.011, phase:0.55, label:'China'   },
+  ];
+  const allRoutes = [...exportRoutes, ...importRoutes];
+
+  function bezierPt(t, p0, cp, p1) {
+    const m = 1-t;
+    return [m*m*p0[0]+2*m*t*cp[0]+t*t*p1[0], m*m*p0[1]+2*m*t*cp[1]+t*t*p1[1]];
+  }
+  function ctrlPt(a, b) {
+    return [(a[0]+b[0])/2, (a[1]+b[1])/2 - (Math.abs(b[0]-a[0])*0.28+0.04)];
+  }
+
+  function makeMap(canvasEl, subtle) {
+    if (!canvasEl) return null;
+    let W, H, t=0, raf=null, running=false;
+
+    function resize() {
+      W = canvasEl.parentElement.clientWidth;
+      H = Math.round(W * (subtle ? 0.42 : 0.46));
+      canvasEl.width  = W * (window.devicePixelRatio||1);
+      canvasEl.height = H * (window.devicePixelRatio||1);
+      canvasEl.style.height = H+'px';
+      const ctx = canvasEl.getContext('2d');
+      ctx.scale(window.devicePixelRatio||1, window.devicePixelRatio||1);
+    }
+
+    function px(nx,ny){ return [nx*W, ny*H]; }
+
+    function draw() {
+      const ctx = canvasEl.getContext('2d');
+      ctx.setTransform(window.devicePixelRatio||1,0,0,window.devicePixelRatio||1,0,0);
+      ctx.clearRect(0,0,W,H);
+
+      // Background
+      ctx.fillStyle = '#0F1923';
+      ctx.fillRect(0,0,W,H);
+
+      // Subtle grid
+      ctx.strokeStyle = 'rgba(255,255,255,0.03)';
+      ctx.lineWidth = 0.7;
+      for(let i=1;i<7;i++){
+        ctx.beginPath(); ctx.moveTo(0,H*i/7); ctx.lineTo(W,H*i/7); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(W*i/7,0); ctx.lineTo(W*i/7,H); ctx.stroke();
+      }
+
+      // Continents
+      continents.forEach((pts,i)=>{
+        const isIndia = i===5;
+        ctx.beginPath();
+        const [x0,y0]=px(pts[0][0],pts[0][1]); ctx.moveTo(x0,y0);
+        pts.slice(1).forEach(pt=>{ const [x,y]=px(pt[0],pt[1]); ctx.lineTo(x,y); });
+        ctx.closePath();
+        ctx.fillStyle   = isIndia ? 'rgba(212,150,10,0.13)' : 'rgba(255,255,255,0.055)';
+        ctx.strokeStyle = isIndia ? 'rgba(212,150,10,0.30)' : 'rgba(255,255,255,0.10)';
+        ctx.lineWidth   = 0.7;
+        ctx.fill(); ctx.stroke();
+      });
+
+      // Routes
+      allRoutes.forEach(r=>{
+        const progress = ((t*r.speed + r.phase) % 1 + 1) % 1;
+        const cp = ctrlPt(r.from, r.to);
+        const [ax,ay]=px(r.from[0],r.from[1]);
+        const [cx,cy]=px(cp[0],cp[1]);
+        const [bx,by]=px(r.to[0],r.to[1]);
+
+        // Faint arc
+        ctx.beginPath(); ctx.moveTo(ax,ay); ctx.quadraticCurveTo(cx,cy,bx,by);
+        ctx.strokeStyle = r.color+'28'; ctx.lineWidth=1.0;
+        ctx.setLineDash([4,5]); ctx.stroke(); ctx.setLineDash([]);
+
+        // Travelling dot
+        const pt = bezierPt(progress, r.from, cp, r.to);
+        const [dx,dy]=px(pt[0],pt[1]);
+        const dotR = Math.max(3, W/160);
+        const grd = ctx.createRadialGradient(dx,dy,0,dx,dy,dotR*3);
+        grd.addColorStop(0, r.color+'bb'); grd.addColorStop(1, r.color+'00');
+        ctx.beginPath(); ctx.arc(dx,dy,dotR*3,0,Math.PI*2); ctx.fillStyle=grd; ctx.fill();
+        ctx.beginPath(); ctx.arc(dx,dy,dotR,0,Math.PI*2); ctx.fillStyle=r.color; ctx.fill();
+      });
+
+      // Destination nodes
+      const nodes = [
+        {pos:UAE,    color:'#D4960A', label:'UAE',       loff:0 },
+        {pos:EUROPE, color:'#D4960A', label:'Europe',    loff:0 },
+        {pos:USA,    color:'#D4960A', label:'USA',       loff:0 },
+        {pos:AFRICA, color:'#D4960A', label:'Africa',    loff:0 },
+        {pos:AUS,    color:'#D4960A', label:'Australia', loff:0 },
+        {pos:VIETNAM,color:'#B84A1A', label:'Vietnam',   loff:0 },
+        {pos:CHINA,  color:'#B84A1A', label:'China',     loff:0 },
+      ];
+      nodes.forEach(n=>{
+        const [x,y]=px(n.pos[0],n.pos[1]);
+        const r=Math.max(3,W/180);
+        ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fillStyle=n.color+'cc'; ctx.fill();
+      });
+
+      // India HQ — larger pulsing dot
+      const [ix,iy]=px(INDIA[0],INDIA[1]);
+      const pulse=(Math.sin(t*2.2)+1)/2;
+      const maxR=Math.max(6,W/80);
+      const grd2=ctx.createRadialGradient(ix,iy,0,ix,iy,maxR*2.5);
+      grd2.addColorStop(0,'rgba(212,150,10,0.5)'); grd2.addColorStop(1,'rgba(212,150,10,0)');
+      ctx.beginPath(); ctx.arc(ix,iy,maxR*2.5,0,Math.PI*2); ctx.fillStyle=grd2; ctx.fill();
+      ctx.beginPath(); ctx.arc(ix,iy,maxR*0.5+maxR*pulse*0.6,0,Math.PI*2);
+      ctx.strokeStyle=`rgba(212,150,10,${0.6-pulse*0.4})`; ctx.lineWidth=1.5; ctx.stroke();
+      ctx.beginPath(); ctx.arc(ix,iy,maxR*0.45,0,Math.PI*2); ctx.fillStyle='#D4960A'; ctx.fill();
+
+      t+=0.016;
+      raf = requestAnimationFrame(draw);
+    }
+
+    function start() {
+      if(running) return;
+      running=true; resize(); draw();
+    }
+    function stop() {
+      running=false; if(raf) cancelAnimationFrame(raf);
+    }
+
+    window.addEventListener('resize',()=>{ if(running) resize(); });
+    return { start, stop };
+  }
+
+  function roundRect(ctx,x,y,w,h,r){
+    ctx.beginPath();
+    ctx.moveTo(x+r,y); ctx.lineTo(x+w-r,y); ctx.arcTo(x+w,y,x+w,y+r,r);
+    ctx.lineTo(x+w,y+h-r); ctx.arcTo(x+w,y+h,x+w-r,y+h,r);
+    ctx.lineTo(x+r,y+h); ctx.arcTo(x,y+h,x,y+h-r,r);
+    ctx.lineTo(x,y+r); ctx.arcTo(x,y,x+r,y,r); ctx.closePath();
+  }
+
+  // Home map — starts immediately
+  const homeMap    = makeMap(document.getElementById('homeTradeMapCanvas'), true);
+  // Contact map — starts when contact page opens
+  const contactMap = makeMap(document.getElementById('tradeMapCanvas'), false);
+  let contactMapStarted = false;
+
+  if(homeMap) homeMap.start();
+
+  const origShowPage = window.showPage;
+  window.showPage = function(id) {
+    origShowPage(id);
+    if(id==='contact' && !contactMapStarted && contactMap) {
+      contactMapStarted=true;
+      setTimeout(()=>contactMap.start(), 80);
+    }
+  };
+})();
+</script>
+</body>
+</html>
